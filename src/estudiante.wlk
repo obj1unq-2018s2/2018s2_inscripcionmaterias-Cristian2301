@@ -2,7 +2,7 @@ import materias.*
 import carreras.*
 
 class Estudiante {
-	var property materiasAprobadas
+	var property materiasAprobada
 	var property carrerasQueCursa
 	var property cantCreditos
 	
