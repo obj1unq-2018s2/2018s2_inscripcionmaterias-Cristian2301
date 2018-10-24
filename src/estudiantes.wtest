@@ -1,0 +1,26 @@
+import estudiante.*
+import carreras.*
+import materias.*
+
+describe "testX" {
+	var materia3 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante3}, carrera = carrera2, cupo = 30, estudiantesEsperando = #{})
+	var materia4 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante2}, carrera = carrera2, cupo = 4, estudiantesEsperando = #{})
+	var materia5 = new Materia(estudiantesInscriptos = #{estudiante2, estudiante3}, carrera = carrera3, cupo = 4, estudiantesEsperando = #{})
+	var estudiante1 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2, carrera3}, materiasAprobadas = #{materia5}, cantCreditos = 250)
+	var estudiante2 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2}, materiasAprobadas = #{materia2, materia3}, cantCreditos = 300)
+	var estudiante3 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2}, materiasAprobadas = #{materia1}, cantCreditos = 124)
+	var carrera1 = new Carrera(materias = #{materia1, materia2})
+	var carrera2 = new Carrera(materias = #{materia3, materia4})
+	var carrera3 = new Carrera(materias = #{materia5})
+	var materia1 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante2}, carrera = carrera1, cupo = 12, estudiantesEsperando = #{})
+	var materia2 = new Materia(estudiantesInscriptos = #{}, carrera = carrera1, cupo = 15, estudiantesEsperando = #{})
+	
+	
+	
+
+	test "test"{
+		assert.equals(#{materia1, materia3, materia4}, estudiante1.materiasQueEstaInscripto())
+
+	}
+
+}
