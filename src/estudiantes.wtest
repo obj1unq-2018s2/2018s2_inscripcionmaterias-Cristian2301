@@ -2,25 +2,40 @@ import estudiante.*
 import carreras.*
 import materias.*
 
-describe "testX" {
-	var materia3 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante3}, carrera = carrera2, cupo = 30, estudiantesEsperando = #{})
-	var materia4 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante2}, carrera = carrera2, cupo = 4, estudiantesEsperando = #{})
-	var materia5 = new Materia(estudiantesInscriptos = #{estudiante2, estudiante3}, carrera = carrera3, cupo = 4, estudiantesEsperando = #{})
-	var estudiante1 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2, carrera3}, materiasAprobadas = #{materia5}, cantCreditos = 250)
-	var estudiante2 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2}, materiasAprobadas = #{materia2, materia3}, cantCreditos = 300)
-	var estudiante3 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2}, materiasAprobadas = #{materia1}, cantCreditos = 124)
-	var carrera1 = new Carrera(materias = #{materia1, materia2})
-	var carrera2 = new Carrera(materias = #{materia3, materia4})
-	var carrera3 = new Carrera(materias = #{materia5})
-	var materia1 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante2}, carrera = carrera1, cupo = 12, estudiantesEsperando = #{})
-	var materia2 = new Materia(estudiantesInscriptos = #{}, carrera = carrera1, cupo = 15, estudiantesEsperando = #{})
+describe "tests punto 7" {
+	const materia1 = new Materia(estudiantesInscriptos = #{estudiante2}, carrera = carrera1, cupo = 12, estudiantesEsperando = #{})
+	const materia2 = new Materia(estudiantesInscriptos = #{}, carrera = carrera1, cupo = 15, estudiantesEsperando = #{})
+	const materia3 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante3}, carrera = carrera2, cupo = 30, estudiantesEsperando = #{})
+	const materia4 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante3}, carrera = carrera2, cupo = 2, estudiantesEsperando = #{})
+	const materiaQueTieneCorrelativas1 = new MateriaQueTieneCorrelativas(estudiantesInscriptos = #{}, carrera = carrera1, cupo = 12, estudiantesEsperando = #{}, materiasCorrelativas = #{materia1, materia2})
+	const materiaAprobada1 = new MateriaAprobada(materia = materia1, nota = 4)
+	const materiaAprobada2 = new MateriaAprobada(materia = materia1, nota = 6)
+	const materiaAprobada3 = new MateriaAprobada(materia = materia3, nota= 8)
+	const estudiante1 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2, carrera3}, materiasAprobadas = #{materiaAprobada1}, cantCreditos =250)
+	const estudiante2 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2}, materiasAprobadas = #{materiaAprobada2, materiaAprobada3}, cantCreditos = 300)
+	const estudiante3 = new Estudiante(carrerasQueCursa = #{carrera1, carrera2}, materiasAprobadas = #{materiaAprobada1}, cantCreditos = 124)
+	const carrera1 = new Carrera(materias = #{materia1, materia2, materiaQueTieneCorrelativas1})
+	const carrera2 = new Carrera(materias = #{materia3, materia4})
+	const carrera3 = new Carrera(materias = #{})
+	
 	
 	
 	
 
-	test "test"{
-		
-
+	test "test 1"{
+		materia1.inscribir(estudiante1)
+		assert.equals(#{estudiante2}, materia1.estudiantesInscriptos())
 	}
 
+
+	test "test2"{
+		materiaQueTieneCorrelativas1.inscribir(estudiante1)
+		assert.equals(#{}, materiaQueTieneCorrelativas1.estudiantesInscriptos())
+	}
+	
+	test "test3" {
+		materia4.inscribir(estudiante2)
+		assert.equals(#{estudiante1, estudiante3}, materia4.estudiantesInscriptos())
+		assert.equals(#{estudiante2}, materia4.estudiantesEsperando())
+	}
 }

@@ -28,12 +28,7 @@ class Estudiante {
 	}
 	
 	method materiasQueSePuedeInscribirDe(carrera){
-		if(carrerasQueCursa.any({carreraQueCursa => carreraQueCursa == carrera})){
 			return carrera.materias().filter({materia => self.puedeCursar(materia)})
-		}
-		else{
-			return #{}
-		}
 	}
 	
 	method materiasQueEstaInscripto(){

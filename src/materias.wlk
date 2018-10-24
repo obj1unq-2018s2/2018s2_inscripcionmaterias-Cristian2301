@@ -7,14 +7,15 @@ class MateriaAprobada{
 class Materia {
 	var estudiantesInscriptos
 	var carrera
-	var cupo
+	var property cupo
 	var estudiantesEsperando
 	
 	method inscribir(estudiante){
 		if(estudiante.puedeCursar(self) and cupo > estudiantesInscriptos.size()){
 			estudiantesInscriptos.add(estudiante)
+			cupo -= 1
 		}
-		else{
+		else if(cupo <= estudiantesInscriptos.size()){
 			estudiantesEsperando.add(estudiante)
 		}
 	}
