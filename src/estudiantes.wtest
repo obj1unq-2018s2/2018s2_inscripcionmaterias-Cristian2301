@@ -19,7 +19,7 @@ describe "testX" {
 	
 
 	test "test"{
-		assert.equals(#{materia1, materia3, materia4}, estudiante1.materiasQueEstaInscripto())
+		
 
 	}
 
