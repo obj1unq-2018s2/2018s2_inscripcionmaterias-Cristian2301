@@ -5,7 +5,7 @@ class MateriaAprobada{
 
 
 class Materia {
-	var estudiantesInscripto
+	var estudiantesInscriptos
 	var carrera
 	var cupo
 	var estudiantesEsperando

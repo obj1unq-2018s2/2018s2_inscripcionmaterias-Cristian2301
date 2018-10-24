@@ -2,7 +2,7 @@ import estudiante.*
 import carreras.*
 import materias.*
 
-describe "testX" 
+describe "testX" {
 	var materia3 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante3}, carrera = carrera2, cupo = 30, estudiantesEsperando = #{})
 	var materia4 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante2}, carrera = carrera2, cupo = 4, estudiantesEsperando = #{})
 	var materia5 = new Materia(estudiantesInscriptos = #{estudiante2, estudiante3}, carrera = carrera3, cupo = 4, estudiantesEsperando = #{})
