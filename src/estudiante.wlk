@@ -20,6 +20,7 @@ class Estudiante {
 	}
 	
 	method estaInscripto(materia){
+		// TODO Mejor con contains
 		return materia.estudiantesInscriptos().any({estudiante => estudiante == self})
 	}
 	
@@ -32,11 +33,13 @@ class Estudiante {
 	}
 	
 	method materiasQueEstaInscripto(){
+		// TODO Falta más delegación y subtareas
 		return carrerasQueCursa.map({carrera => carrera.materias().filter({materia => materia.estudiantesInscriptos().contains(self)})
 		}).flatten().asSet()
 	}
 	
 	method materiasQueQuedoEnListaDeEspera(){
+		// TODO Falta más delegación y subtareas
 		return carrerasQueCursa.map({carrera => carrera.materias().filter({materia => materia.estudiantesEsperando().contains(self)})
 		}).flatten().asSet()
 	}

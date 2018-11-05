@@ -41,8 +41,10 @@ class Materia {
 
 class MateriaQueTieneCorrelativas inherits Materia {
 	var materiasCorrelativas
-	
+
+	// TODO Este nombre es muy poco claro.	
 	method prerrequisitos(estudiante){
+		// TODO Delegar en estudiante y código repetido.
 		return materiasCorrelativas.all({materia => estudiante.materiasAprobadas().contains(materia)})
 	}
 	
@@ -52,7 +54,7 @@ class MateriaQueTieneCorrelativas inherits Materia {
 
 class MateriaQueNecesitaCreditos inherits Materia {
 	var property cantCreditosRequeridos
-	var cantCreditosOtorga
+	var cantCreditosOtorga // TODO Este atributo corresponde a la superclase, y no se está usando
 	
 	method prerrequisitos(estudiante){
 		return estudiante.cantCreditos() >= cantCreditosRequeridos
@@ -62,9 +64,10 @@ class MateriaQueNecesitaCreditos inherits Materia {
 
 
 class MateriaQueHayQueTenerMateriasAprobadas inherits Materia {
-	var property anioAlCualPertenece
+	var property anioAlCualPertenece // TODO Este atributo corresponde a la superclase
 	
 	method prerrequisitos(estudiante){
+		// TODO Delegar en estudiante, no le pidas su colección de materias, preguntale si aprobó.
 		return self.materiasDelAnioPasado().all({materia => estudiante.materiasAprobadas().contains(materia)})
 	}
 	

@@ -3,6 +3,8 @@ import carreras.*
 import materias.*
 
 describe "tests punto 7" {
+	// TODO Aprovechá los valores por defecto en los atributos para simplificar la construcción de objetos, principamente las listas vacías se pueden evitar.
+	// TODO Estás usando las variables antes de definirlas!
 	const materia1 = new Materia(estudiantesInscriptos = #{estudiante2}, carrera = carrera1, cupo = 12, estudiantesEsperando = #{})
 	const materia2 = new Materia(estudiantesInscriptos = #{}, carrera = carrera1, cupo = 15, estudiantesEsperando = #{})
 	const materia3 = new Materia(estudiantesInscriptos = #{estudiante1, estudiante3}, carrera = carrera2, cupo = 30, estudiantesEsperando = #{})
@@ -29,7 +31,7 @@ describe "tests punto 7" {
 
 
 	test "test2"{
-		materiaQueTieneCorrelativas1.inscribir(estudiante1)
+		materiaQueTieneCorrelativas1.inscribir(estudiante1) // TODO Esto debería tirar excepcion.
 		assert.equals(#{}, materiaQueTieneCorrelativas1.estudiantesInscriptos())
 	}
 	
